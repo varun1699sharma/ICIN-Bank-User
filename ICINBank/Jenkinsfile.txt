@@ -3,20 +3,20 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-               // bat "rmdir  /s /q ICINBank"
+                bat "rmdir  /s /q ICIN-Bank-User"
                 bat "git clone https://github.com/varun1699sharma/ICIN-Bank-User.git"
-                bat "mvn clean -f ICINBank"
+                bat "mvn clean"
             }
         }
         stage('install') {
             steps {
-                bat "mvn install -f ICINBank"
+                bat "mvn install"
             }
         }
    
         stage('package') {
             steps {
-                bat "mvn package -f ICINBank"
+                bat "mvn package"
             }
         }
     }
