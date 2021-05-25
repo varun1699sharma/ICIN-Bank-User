@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('git repo & clean') {
+            steps {
+               // bat "rmdir  /s /q ICINBank"
+                bat "git clone https://github.com/varun1699sharma/ICIN-Bank-User.git"
+                bat "mvn clean -f ICINBank"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f ICINBank"
+            }
+        }
+   
+        stage('package') {
+            steps {
+                bat "mvn package -f ICINBank"
+            }
+        }
+    }
+}
